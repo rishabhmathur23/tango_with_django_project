@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+<<<<<<< HEAD
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -9,6 +10,22 @@ def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
     context_dict = {}
+=======
+from django.urls import reverse
+from rango.models import Category, Page
+from rango.forms import CategoryForm, PageForm
+
+def index(request):
+    
+    category_list = Category.objects.order_by('-likes')[:5]
+    page_list = Page.objects.order_by('-views')[:5]
+    context_dict = {}
+
+    context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
+    context_dict['categories'] = category_list
+    context_dict['pages'] = page_list
+    return render(request, 'rango/index.html', context=context_dict)
+>>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd
 
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['categories'] = category_list
@@ -18,6 +35,10 @@ def about(request):
     return render(request, 'rango/about.html')
 def show_category(request, category_name_slug):
     context_dict = {}
+<<<<<<< HEAD
+=======
+
+>>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd
     try:
         category = Category.objects.get(slug=category_name_slug)
         pages = Page.objects.filter(category=category)
@@ -29,29 +50,53 @@ def show_category(request, category_name_slug):
         context_dict['category'] = None
         context_dict['pages'] = None
     return render(request, 'rango/category.html', context=context_dict)
+<<<<<<< HEAD
 @login_required
+=======
+
+>>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd
 def add_category(request):
     form = CategoryForm()
     if request.method == 'POST':
         form = CategoryForm(request.POST)
+<<<<<<< HEAD
+=======
+
+>>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd
         if form.is_valid():
             form.save(commit=True)
             return redirect('/rango/')
         else:
             print(form.errors)
     return render(request, 'rango/add_category.html', {'form': form})
+<<<<<<< HEAD
 @login_required
+=======
+
+>>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd
 def add_page(request, category_name_slug):
     try:
         category = Category.objects.get(slug=category_name_slug)
     except:
         category = None
+<<<<<<< HEAD
     if category is None:
         print("Problem")
         return redirect('/rango/')
     form = PageForm()
     if request.method == 'POST':
         form = PageForm(request.POST)
+=======
+
+    if category is None:
+        print("Problem")
+        return redirect('/rango/')
+
+    form = PageForm()
+    if request.method == 'POST':
+        form = PageForm(request.POST)
+
+>>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd
         if form.is_valid():
             if category:
                 page = form.save(commit=False)
@@ -63,6 +108,7 @@ def add_page(request, category_name_slug):
             print(form.errors)
     context_dict = {'form': form, 'category': category}
     return render(request, 'rango/add_page.html', context=context_dict)
+<<<<<<< HEAD
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -117,3 +163,5 @@ def restricted(request):
 def user_logout(request):
     logout(request)
     return redirect(reverse('rango:index'))
+=======
+>>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd
