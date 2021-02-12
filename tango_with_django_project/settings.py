@@ -126,5 +126,6 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 ]
 
-LOGIN_URL = 'rango:login'
+LOGIN_URL = 'rango:login
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 MEDIA_URL = '/media/'

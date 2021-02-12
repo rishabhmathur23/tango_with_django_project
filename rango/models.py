@@ -1,13 +1,9 @@
 from django.db import models
 from django.template.defaultfilters import slugify
-<<<<<<< HEAD
 from django.contrib.auth.models import User
-=======
->>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd
-# Create your models here.
+
 class Category(models.Model):
     NAME_MAX_LENGTH = 128
-
     name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0) 
@@ -33,12 +29,10 @@ class Page(models.Model):
 
     def __str__(self):
         return self.title
-<<<<<<< HEAD
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to="profile_images", blank=True)
     def __str__(self):
         return self.user.username
-=======
->>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd

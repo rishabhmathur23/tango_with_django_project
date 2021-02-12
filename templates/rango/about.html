@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-<html>
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
-
 {% block title_block %}
 	About Rango
 {% endblock %}
-
 {% block body_block %}
   <h1>Rango says...</h1>
   <div>
@@ -14,26 +10,10 @@
     <strong>This tutorial has been put together by Rishabh Mathur.</strong><br />
   </div>
   <div>
-		<img src="{{ MEDIA_URL }}cat.jpg" alt="Picture of a Cat." />
-  </div>
-{% endblock %}
-=======
-<html>
-{% extends 'rango/base.html' %}
-{% load staticfiles %}
-
-{% block title_block %}
-	About Rango
-{% endblock %}
-
-{% block body_block %}
-  <h1>Rango says...</h1>
-  <div>
-    here is the about page.<br />
-    <strong>This tutorial has been put together by Rishabh Mathur.</strong><br />
-  </div>
+    <p>Visits: {{ visits }}</p>
+	</div>
+	
   <div>
 		<img src="{{ MEDIA_URL }}cat.jpg" alt="Picture of a Cat." />
   </div>
 {% endblock %}
->>>>>>> dfff8dc76e2ea3abd62f521a43a1667a8eb58bcd
